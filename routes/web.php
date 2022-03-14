@@ -14,13 +14,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+
+    $homepage = "Benvenuti nella HOMEPAGE";
+
+    return view('home', compact('homepage'));
 })->name('home');
 
 Route::get('/products', function () {
-    return view('products');
+
+    $products = "Benvenuti nella sezione PRODOTTI";
+    $data = [
+        'product_list' => ['lorem', 'ipsum', 'dolor', 'sit'],
+    ];
+
+    return view('products', compact('products'), $data);
 })->name('products');
 
 Route::get('/contacts', function () {
-    return view('contacts');
+
+    $contacts = "Benvenuti nella sezione CONTATTI";
+    $data = [
+        'name' => 'Lorem',
+        'surname' => 'Ipsum'
+    ];
+
+    return view('contacts', compact('contacts'), $data);
 })->name('contacts');
